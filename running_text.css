@@ -1,0 +1,62 @@
+/* Move Element */
+.move-container {
+    position: relative;
+    height: 120px;
+    background-color: black;
+    z-index: 0;
+}
+
+.move-element {
+    background-color: red;
+    width: 75px;
+    height: 75px;
+    position: absolute;
+
+    opacity: 0;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+
+    transition: opacity 1s;
+}
+
+/* Text Scroll */
+.text-scroll-wrapper {
+    position: absolute;
+    display: flex;
+    top: 50%;
+
+    gap: 15px;
+    pointer-events: none;
+    white-space: nowrap;
+    animation: scroll-anim 5s infinite linear;
+}
+
+.text-scroll {
+    width: max-content;
+    font-size: 50px;
+    pointer-events: none;
+    margin: auto;
+}
+
+:root {
+    --offset: 20vw;
+    --move-initial: calc(-25% + var(--offset));
+    --move-final: calc(-50% + var(--offset));
+}
+
+@keyframes scroll-anim {
+    from {
+        -moz-transform: translate(var(--move-initial), -50%);
+        -webkit-transform: translate(var(--move-initial), -50%);
+        transform: translate(var(--move-initial), -50%);
+    }
+
+    to {
+        -moz-transform: translate(var(--move-final), -50%);
+        -webkit-transform: translate(var(--move-final), -50%);
+        transform: translate(var(--move-final), -50%);
+    }
+}
